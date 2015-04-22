@@ -81,10 +81,11 @@ class PlacesController < ApplicationController
 
 		if place
 
-			if params[:review_description].length > 0
+			if params[:title].length > 0
 				review = Review.new
 				review.place_id = place.id
 				review.description = params[:review_description]
+				review.title = params[:title]
 				review.rating = params[:rating].to_i
 				review.save
 

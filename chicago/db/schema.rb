@@ -17,13 +17,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "name"
     t.integer "admission_price"
     t.string  "photo_url"
-    t.string  "description"
+    t.text    "description"
   end
 
   create_table "reviews", force: true do |t|
     t.integer "place_id"
     t.string  "description"
     t.integer "rating"
+    t.string  "title"
   end
 
   add_index "reviews", ["place_id"], name: "index_reviews_on_place_id"

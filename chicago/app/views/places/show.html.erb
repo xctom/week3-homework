@@ -23,13 +23,15 @@
 	<h4>Write a review</h4>
 	<form action = "/places/<%= @place.id %>/reviews/add">
 		<%= select_tag "rating", options_for_select({ "5 star" => 5, "4 star" => 4, "3 star" => 3, "2 star" => 2, "1 star" => 1, "0 star" => 0},"5")%>
-		<%= text_field_tag 'review_description' , '', size: 75%>
+		<%= text_field_tag 'title' , '', placeholder: 'Enter title', size: 20%>
+		<%= text_field_tag 'review_description' , '', placeholder: 'Enter description', size: 75%>
 		<%= submit_tag 'Submit' %>
 	</form>
 
 	<div>
 		<% @reviews.each do |review| %>
 			<div class = "single_review">
+				<h3><%= review.title %></h3>
 				<% for i in 1..review.rating%>
 					<%= image_tag 'http://www.clipartpal.com/_thumbs/pd/education/small_gold_star.png', :class => "star" %>
 				<% end %>
