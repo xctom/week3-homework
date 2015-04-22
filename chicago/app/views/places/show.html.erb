@@ -1,0 +1,41 @@
+<h2 class = "show_title"><%= @place.name %></h2>
+
+<br>	
+<div>
+	<span class = "show_admission_price">
+		Admission Price: <%= number_to_currency(@place.admission_price/100.0, precision: 2) %>
+	</span>
+	<%= link_to "Edit" , controller: "places", action: "edit", id: @place.id %>
+</div>
+<br>
+
+<div class = "row">
+	<div class = "col-md-4">
+		<%= image_tag @place.photo_url, :class => "show_image" %>
+	</div>
+	<div class = "col-md-8">
+		<%= @place.description %>
+	</div>
+</div>
+
+<div>
+	<h2>Reviews</h2>
+	<h4>Write a review</h4>
+	<form action = "/places/<%= @place.id %>/reviews/add">
+		<%= select_tag "rating", options_for_select({ "5 star" => 5, "4 star" => 4, "3 star" => 3, "2 star" => 2, "1 star" => 1, "0 star" => 0},"5")%>
+		<%= text_field_tag 'review_description' , '', size: 75%>
+		<%= submit_tag 'Submit' %>
+	</form>
+
+	<div>
+		<% @reviews.each do |review| %>
+			<div class = "single_review">
+				<% for i in 1..review.rating%>
+					<%= image_tag 'http://www.clipartpal.com/_thumbs/pd/education/small_gold_star.png', :class => "star" %>
+				<% end %>
+				<%= review.description %>
+			</div>
+		<% end %>
+	</div>
+</div>
+

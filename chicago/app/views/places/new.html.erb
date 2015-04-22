@@ -1,0 +1,9 @@
+<h2>Add a New Place</h2>
+<form action = "/places/create">
+Title: <%= text_field_tag 'name', '', size: 75 %><br><br>
+Photo URL: <%= text_field_tag 'photo_url', '', size: 120 %><br><br>
+Price: <%= text_field_tag 'admission_price', '', size: 50 %><br><br>
+Description: <br>
+<%= text_area_tag 'description', nil, size: "100x10"%><br><br>
+<%= submit_tag 'Submit'%>
+</form>

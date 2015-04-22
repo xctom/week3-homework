@@ -1,0 +1,9 @@
+<h2>Edit a New Place</h2>
+<form action = "/places/<%= @place.id %>/update">
+	Title: <%= text_field_tag 'name', @place.name, size: 75 %><br><br>
+	Photo URL: <%= text_field_tag 'photo_url', @place.photo_url, size: 120 %><br><br>
+	Price: <%= text_field_tag 'admission_price', number_to_currency(@place.admission_price/100.0, precision: 2).remove("$"), size: 50 %><br><br>
+	Description: <br>
+	<%= text_area_tag 'description', @place.description, size: "100x10"%><br><br>
+	<%= submit_tag 'Update'%>
+</form>

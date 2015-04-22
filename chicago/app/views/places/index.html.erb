@@ -1,0 +1,10 @@
+<h3><%= link_to "Add a New Place", controller: "places", action: "new" %></h3>
+<ul>
+	<% @places.each do |place| %>
+		<li>
+			<%= link_to place.name, controller: "places", action: "show", id: place.id %>
+			(<%= number_to_currency(place.admission_price/100.0, precision: 2) %>)
+			(<%= link_to "delete", controller: "places", action: "delete", id: place.id %>)
+		</li>
+	<% end %>
+</ul>
